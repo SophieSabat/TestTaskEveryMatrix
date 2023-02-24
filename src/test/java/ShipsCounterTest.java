@@ -3,7 +3,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class CountOfShipsTest {
+public class ShipsCounterTest {
 
     /**
      * This method tests the countOfShips() method in the ShipsCounter class when there are no ships on the board.
