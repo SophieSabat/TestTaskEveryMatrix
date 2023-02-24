@@ -72,7 +72,8 @@ public class ShipsCounter {
     }
 
     /**
-     * This method performs depth-first search on a two-dimensional array of ships to find and mark all cells belonging to a ship that contains the initial cell (row, col). The algorithm searches only horizontally and vertically, and exits from the recursion if the array boundary is reached or the cell does not belong to the ship.
+     * This method performs depth-first search on a two-dimensional array of ships to find and mark all cells belonging to a ship that contains the initial cell (row, col).
+     * The algorithm searches horizontally and vertically, and exits from the recursion if the array boundary is reached or the cell does not belong to the ship.
      *
      * @param ships a two-dimensional array of integers representing ships (1 for cells belonging to a ship, 0 for cells not belonging to a ship)
      * @param row   the row index of the initial cell to start searching from
@@ -85,10 +86,17 @@ public class ShipsCounter {
         }
         ships[row][col] = 0;
 
-        if (row < ships.length - 1 && ships[row + 1][col] == 1) {
-            depthFirstSearch(ships, row + 1, col);
-        } else if (col < ships.length - 1 && ships[row][col + 1] == 1) {
+        if (col > 0 && ships[row][col - 1] == 1) {
+            depthFirstSearch(ships, row, col - 1);
+        }
+        else if (col < ships.length - 1 && ships[row][col + 1] == 1) {
             depthFirstSearch(ships, row, col + 1);
+        }
+        else if (row > 0 && ships[row - 1][col] == 1) {
+            depthFirstSearch(ships, row - 1, col);
+        }
+        else if (row < ships.length - 1 && ships[row + 1][col] == 1) {
+            depthFirstSearch(ships, row + 1, col);
         }
     }
 
